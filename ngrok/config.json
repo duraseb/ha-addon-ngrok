@@ -5,7 +5,7 @@
   "description": "A unofficial ngrok client installer and configuator for Home Assistant",
   "init": false,
   "webui": "http://[HOST]:[PORT:4040]",
-  "url": "https://github.com/pssc/ha-addon-ngrok",
+  "url": "https://github.com/duraseb/ha-addon-ngrok",
   "stage": "experimental",
   "arch": [
     "aarch64",
@@ -30,6 +30,7 @@
         "proto": "http",
         "addr": 8123,
         "inspect": false,
+        "edge": "",
         "auth": ""
       }
     ]
@@ -49,6 +50,7 @@
         "bind_tls": "bool?",
         "subdomain": "str?",
         "hostname": "str?",
+        "edge": "str?",
         "crt": "str?",
         "key": "str?",
         "client_cas": "str?",
