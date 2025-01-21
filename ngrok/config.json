@@ -1,8 +1,8 @@
 {
-  "name": "ngrok Client Installer (Unofficial)",
-  "version": "15.0.5.3.0",
+  "name": "ngrok Client (Unofficial)",
+  "version": "0.0.1",
   "slug": "ngrok",
-  "description": "A unofficial ngrok client installer and configuator for Home Assistant",
+  "description": "A unofficial ngrok client for Home Assistant",
   "init": false,
   "webui": "http://[HOST]:[PORT:4040]",
   "url": "https://github.com/duraseb/ha-addon-ngrok",
