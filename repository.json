@@ -1,5 +1,5 @@
 {
-  "name": "Home Assistant Addon ngrok client installer (Unofficial)",
+  "name": "Home Assistant Addon ngrok client (Unofficial)",
   "url": "https://github.com/duraseb/ha-addon-ngrok",
   "maintainer": "duraseb"
 }
