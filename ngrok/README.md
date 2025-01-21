@@ -1,4 +1,4 @@
-# ngrok client installer and configurator addon for Home Assistant
+# ngrok client addon for Home Assistant
 
 Based on the work of "Dylan Hasler" form "Home Assistant Add-ons - dy1io", https://github.com/dy1io/hassio-addons
 
@@ -13,4 +13,4 @@ able to setup a port forward, do not use this addon.
           Using a TLS tunnel will prevent this because you can control the certificate.
           To use some features of this add-on, you need a paid ngrok account._
 
-[github_link]: https://github.com/pssc/ha-addon-ngrok/issues
+[github_link]: https://github.com/duraseb/ha-addon-ngrok/issues
