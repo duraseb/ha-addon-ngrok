@@ -64,7 +64,7 @@ for id in $(bashio::config "tunnels|keys"); do
   fi
   label=$(bashio::config "tunnels[${id}].label")
   if [[ $label != "" ]]; then
-    ngrok_label="--label $label"
+    echo "    label: $label" >> $configPath
   fi
   crt=$(bashio::config "tunnels[${id}].crt")
   if [[ $crt != "null" ]]; then
@@ -90,4 +90,4 @@ done
 configfile=$(cat $configPath)
 bashio::log.debug "Config file: \n${configfile}"
 bashio::log.info "Starting ngrok..."
-ngrok start --config $configPath --all $ngrok_label
+ngrok start --config $configPath --all
