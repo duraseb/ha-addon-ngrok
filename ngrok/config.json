@@ -23,7 +23,7 @@
   "options": {
     "log_level": "info",
     "auth_token": "",
-    "region": "us",
+    "region": "eu",
     "tunnels": [
       {
         "name": "hass",
