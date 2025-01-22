@@ -62,9 +62,9 @@ for id in $(bashio::config "tunnels|keys"); do
   if [[ $hostname != "null" ]]; then
     echo "    hostname: $hostname" >> $configPath
   fi
-  label=$(bashio::config "tunnels[${id}].label")
-  if [[ $label != "" ]]; then
-    echo "    label: $label" >> $configPath
+  url=$(bashio::config "tunnels[${id}].url")
+  if [[ $url != "" ]]; then
+    echo "    url: $url" >> $configPath
   fi
   crt=$(bashio::config "tunnels[${id}].crt")
   if [[ $crt != "null" ]]; then
