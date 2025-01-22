@@ -1,6 +1,6 @@
 {
   "name": "ngrok Client (Unofficial)",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "slug": "ngrok",
   "description": "A unofficial ngrok client for Home Assistant",
   "init": false,
