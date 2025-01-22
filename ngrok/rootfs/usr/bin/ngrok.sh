@@ -5,7 +5,7 @@ bashio::log.debug "Building ngrok.yml..."
 configPath="/ngrok-config/ngrok.yml"
 mkdir -p /ngrok-config
 echo "log: stdout" > $configPath
-echo "version: 1" >> $configPath
+echo "version: 3" >> $configPath
 bashio::log.debug "Web interface port: $(bashio::addon.port 4040)"
 if bashio::var.has_value "$(bashio::addon.port 4040)"; then
   echo "web_addr: 0.0.0.0:$(bashio::addon.port 4040)" >> $configPath
@@ -14,17 +14,18 @@ if bashio::var.has_value "$(bashio::config 'log_level')"; then
   echo "log_level: $(bashio::config 'log_level')" >> $configPath
 fi
 if bashio::var.has_value "$(bashio::config 'auth_token')"; then
-  echo "authtoken: $(bashio::config 'auth_token')" >> $configPath
+  echo "agent:" >> $configPath
+  echo "  authtoken: $(bashio::config 'auth_token')" >> $configPath
 fi
 if bashio::var.has_value "$(bashio::config 'region')"; then
   echo "region: $(bashio::config 'region')" >> $configPath
 else
   echo "No region defined, default region is US."
 fi
-echo "tunnels:" >> $configPath
+echo "endpoints:" >> $configPath
 for id in $(bashio::config "tunnels|keys"); do
   name=$(bashio::config "tunnels[${id}].name")
-  echo "  $name:" >> $configPath
+  echo "  - name: $name" >> $configPath
   proto=$(bashio::config "tunnels[${id}].proto")
   if [[ $proto != "null" ]]; then
     echo "    proto: $proto" >> $configPath
@@ -57,9 +58,10 @@ for id in $(bashio::config "tunnels|keys"); do
   if [[ $subdomain != "null" ]]; then
     echo "    subdomain: $subdomain" >> $configPath
   fi
-  hostname=$(bashio::config "tunnels[${id}].hostname")
-  if [[ $hostname != "null" ]]; then
-    echo "    hostname: $hostname" >> $configPath
+  url=$(bashio::config "tunnels[${id}].url")
+  if [[ $url != "null" ]]; then
+    echo "    upstream:" >> $configPath
+    echo "      url: $hostname" >> $configPath
   fi
   edge=$(bashio::config "tunnels[${id}].edge")
   if [[ $edge != "" ]]; then
