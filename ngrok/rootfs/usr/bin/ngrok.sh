@@ -3,7 +3,6 @@ set -e
 bashio::log.info "$(ngrok --version)"
 bashio::log.debug "Building ngrok.yml..."
 configPath="/ngrok-config/ngrok.yml"
-ngrok_label=""
 mkdir -p /ngrok-config
 echo "log: stdout" > $configPath
 echo "version: 1" >> $configPath
@@ -62,9 +61,10 @@ for id in $(bashio::config "tunnels|keys"); do
   if [[ $hostname != "null" ]]; then
     echo "    hostname: $hostname" >> $configPath
   fi
-  url=$(bashio::config "tunnels[${id}].url")
-  if [[ $url != "" ]]; then
-    echo "    url: $url" >> $configPath
+  edge=$(bashio::config "tunnels[${id}].edge")
+  if [[ $edge != "" ]]; then
+    echo "    labels:" >> $configPath
+    echo "      - edge=$edge" >> $configPath
   fi
   crt=$(bashio::config "tunnels[${id}].crt")
   if [[ $crt != "null" ]]; then
