@@ -92,6 +92,4 @@ done
 configfile=$(cat $configPath)
 bashio::log.debug "Config file: \n${configfile}"
 bashio::log.info "Starting ngrok..."
-#ngrok start --config $configPath --all
-bashio::log.debug "ngrok tunnel --label edge=$edge $proto://$addr"
-ngrok tunnel --label edge=$edge $proto://$addr
+ngrok start --config $configPath --all
