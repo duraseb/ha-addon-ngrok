@@ -1,6 +1,6 @@
 {
   "name": "ngrok Client (Unofficial)",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "slug": "ngrok",
   "description": "A unofficial ngrok client for Home Assistant",
   "init": false,
@@ -30,7 +30,7 @@
         "proto": "http",
         "addr": 8123,
         "inspect": false,
-        "url": "",
+        "edge": "",
         "auth": ""
       }
     ]
@@ -50,7 +50,7 @@
         "bind_tls": "bool?",
         "subdomain": "str?",
         "hostname": "str?",
-        "url": "str?",
+        "edge": "str?",
         "crt": "str?",
         "key": "str?",
         "client_cas": "str?",
