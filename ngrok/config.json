@@ -30,7 +30,7 @@
         "proto": "http",
         "addr": 8123,
         "inspect": false,
-        "label": "",
+        "url": "",
         "auth": ""
       }
     ]
@@ -50,7 +50,7 @@
         "bind_tls": "bool?",
         "subdomain": "str?",
         "hostname": "str?",
-        "label": "str?",
+        "url": "str?",
         "crt": "str?",
         "key": "str?",
         "client_cas": "str?",
