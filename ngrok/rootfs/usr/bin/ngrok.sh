@@ -29,10 +29,6 @@ for id in $(bashio::config "tunnels|keys"); do
   name=$(bashio::config "tunnels[${id}].name")
 #  echo "  - name: $name" >> $configPath
   echo "  $name:" >> $configPath
-  proto=$(bashio::config "tunnels[${id}].proto")
-  if [[ $proto != "null" ]]; then
-    echo "    proto: $proto" >> $configPath
-  fi
   addr=$(bashio::config "tunnels[${id}].addr")
   if [[ $addr != "null" ]]; then
     if [[ $addr =~ ^([1-9]|[1-5]?[0-9]{2,4}|6[1-4][0-9]{3}|65[1-4][0-9]{2}|655[1-2][0-9]|6553[1-5])$ ]]; then
@@ -46,7 +42,7 @@ for id in $(bashio::config "tunnels|keys"); do
     echo "    inspect: $inspect" >> $configPath
   fi
   auth=$(bashio::config "tunnels[${id}].auth")
-  if [[ $auth != "null" ]]; then
+  if [[ $auth != "" ]]; then
     echo "    auth: $auth" >> $configPath
   fi
   host_header=$(bashio::config "tunnels[${id}].host_header")
@@ -57,10 +53,6 @@ for id in $(bashio::config "tunnels|keys"); do
   if [[ $bind_tls != "null" ]]; then
     echo "    bind_tls: $bind_tls" >> $configPath
   fi
-  subdomain=$(bashio::config "tunnels[${id}].subdomain")
-  if [[ $subdomain != "null" ]]; then
-    echo "    subdomain: $subdomain" >> $configPath
-  fi
   url=$(bashio::config "tunnels[${id}].url")
   if [[ $url != "null" ]]; then
     echo "    upstream:" >> $configPath
@@ -70,6 +62,15 @@ for id in $(bashio::config "tunnels|keys"); do
   if [[ $edge != "" ]]; then
     echo "    labels:" >> $configPath
     echo "      - edge=$edge" >> $configPath
+  else
+    proto=$(bashio::config "tunnels[${id}].proto")
+    if [[ $proto != "null" ]]; then
+      echo "    proto: $proto" >> $configPath
+    fi
+    subdomain=$(bashio::config "tunnels[${id}].subdomain")
+    if [[ $subdomain != "null" ]]; then
+      echo "    subdomain: $subdomain" >> $configPath
+    fi
   fi
   crt=$(bashio::config "tunnels[${id}].crt")
   if [[ $crt != "null" ]]; then
